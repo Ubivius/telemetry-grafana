@@ -14,19 +14,17 @@ datasources:
   datasources.yaml:
     apiVersion: 1
     datasources:
-      #- name: Loki
-      #  type: loki
-      #  access: proxy
-      #  url: http://loki:3100
-      #  isDefault: true
-      #  version: 1
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+        version: 1
       - name: Jaeger
         type: jaeger
         url: http://jaeger-query
         access: proxy
-        isDefault: true
         version: 1
-# TODO: trouver comment avoir plusieurs datasources
+# TODO: Ajouter les autres datasources
 
 ## Configure notifiers
 ## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
