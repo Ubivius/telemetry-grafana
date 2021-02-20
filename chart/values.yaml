@@ -7,6 +7,14 @@ service:
   type: LoadBalancer
   port: 3000
 
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 25m # default 100m
+    memory: 128Mi
+
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources
 ##
@@ -24,7 +32,11 @@ datasources:
         url: http://jaeger-query
         access: proxy
         version: 1
-# TODO: Ajouter les autres datasources
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server
+        access: proxy
+        version: 1
 
 ## Configure notifiers
 ## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
