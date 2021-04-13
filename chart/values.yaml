@@ -4,7 +4,7 @@ persistence:
 plugins: [grafana-kubernetes-app]
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 3000
 
 resources: 
@@ -14,6 +14,23 @@ resources:
   limits:
     cpu: 100m
     memory: 128Mi
+
+grafana.ini:
+  security:
+    allow_embedding: true
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - grafana.admin.dev.ubivius.tk
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources
