@@ -1,3 +1,7 @@
+# telemetry-grafana
+
+A dashboard manager to display all the relevant informations to enable your team to deploy and diagnose the cluster's content
+
 # Grafana Helm Chart
 
 - grafana · grafana/grafana (https://artifacthub.io/packages/helm/grafana/grafana)
@@ -14,7 +18,7 @@ $ helm repo update
 To install the chart with the release name `grafana`:
 
 ```console
-$ helm install grafana --version <version> grafana/grafana -f values.yaml
+$ helm install grafana --version <version> grafana/grafana -f chart/values.yaml
 ```
 
 ## Grafana password
