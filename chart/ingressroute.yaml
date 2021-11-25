@@ -1,4 +1,3 @@
-{{- if .Values.ingressRoute.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -7,20 +6,12 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: {{ .Values.ingressRoute.match }}
+    - match: Host(`grafana.admin.dev.ubivius.tk`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: grafana
           kind: Service
-          port: {{ .Values.service.port }}
-          namespace: {{ .Release.Namespace }}
-    {{- if .Values.ingressRoute.middlewares }}
-      middlewares:
-      {{- range .Values.ingressRoute.middlewares }}
-        - name: {{ .name }}
+          port: 3000
           namespace: default
-      {{- end }}
-    {{- end }}
   tls:
-    secretName: {{ .Values.ingressRoute.tls.secretName }}
-{{- end }}     
+    secretName: grafana.admin.dev.ubivius.tk

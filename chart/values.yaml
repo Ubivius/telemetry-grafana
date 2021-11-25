@@ -32,12 +32,6 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-ingressRoute:
-  enabled: true
-  match: Host(`grafana.admin.dev.ubivius.tk`) && PathPrefix(`/`)
-  tls:
-    secretName: grafana.admin.dev.ubivius.tk
-
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources
 ##
