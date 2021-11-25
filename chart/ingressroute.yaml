@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-ingressroute
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`grafana.admin.dev.ubivius.tk`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: grafana
+          kind: Service
+          port: 3000
+          namespace: default
+  tls:
+    secretName: grafana.admin.dev.ubivius.tk
